@@ -1,6 +1,5 @@
 # Mod Hub
 ### **Simple Mod Hub for Geometry Dash Mods on Windows**
-<br>
 
 # 📃 About
 Mod Hub is an easy way to setup Geometry Dash mods. With a huge catalog of templates, you can easily create your 
