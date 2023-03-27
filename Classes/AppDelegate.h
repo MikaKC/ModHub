@@ -32,6 +32,18 @@ public:
     @param  the pointer of the application
     */
     virtual void applicationWillEnterForeground();
+
+    /**
+    @brief  Returns the refresh rate of the current monitor  
+    */
+    inline const float& getRefreshRate() {
+        DEVMODE lpDevMode;
+        memset(&lpDevMode, 0, sizeof(DEVMODE));
+        lpDevMode.dmSize = sizeof(DEVMODE);
+        lpDevMode.dmDriverExtra = 0;
+
+        return static_cast<float>(lpDevMode.dmDisplayFrequency);
+    };
 };
 
 #endif // _APP_DELEGATE_H_
