@@ -7,6 +7,12 @@
     <Filter Include="Classes">
       <UniqueIdentifier>{bb6c862e-70e9-49d9-81b7-3829a6f50471}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\GUI">
+      <UniqueIdentifier>{00e2e8e3-a041-4441-9730-0c0b7d6e4e48}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Layers">
+      <UniqueIdentifier>{bb908dae-1383-450f-b298-e911b9963146}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -15,8 +21,11 @@
     <ClCompile Include="..\Classes\AppDelegate.cpp">
       <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\MainSelectLayer.cpp">
-      <Filter>Classes</Filter>
+    <ClCompile Include="..\Classes\Layers\MainSelectLayer.cpp">
+      <Filter>Classes\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GUI\SliderNode.cpp">
+      <Filter>Classes\GUI</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -26,8 +35,11 @@
     <ClInclude Include="..\Classes\AppDelegate.h">
       <Filter>Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\MainSelectLayer.h">
-      <Filter>Classes</Filter>
+    <ClInclude Include="..\Classes\Layers\MainSelectLayer.h">
+      <Filter>Classes\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GUI\SliderNode.h">
+      <Filter>Classes\GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

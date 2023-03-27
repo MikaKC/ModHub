@@ -1,5 +1,5 @@
 #include "AppDelegate.h"
-#include "MainSelectLayer.h"
+#include "Layers/MainSelectLayer.h"
 
 USING_NS_CC;
 
@@ -12,23 +12,14 @@ AppDelegate::~AppDelegate()
 }
 
 bool AppDelegate::applicationDidFinishLaunching() {
-    // initialize director
     CCDirector* pDirector = CCDirector::sharedDirector();
     CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
 
     pDirector->setOpenGLView(pEGLView);
-	
-    // turn on display FPS
-    pDirector->setDisplayStats(false);
 
-    // set FPS. the default value is 1.0/60 if you don't call this
     pDirector->setAnimationInterval(1.0 / this->getRefreshRate());
 
-    // create a scene. it's an autorelease object
-    CCScene *pScene = MainSelectLayer::scene();
-
-    // run
-    pDirector->runWithScene(pScene);
+    pDirector->runWithScene(MainSelectLayer::scene());
 
     return true;
 }
@@ -39,6 +30,7 @@ void AppDelegate::applicationDidEnterBackground() {
 
     // if you use SimpleAudioEngine, it must be pause
     // SimpleAudioEngine::sharedEngine()->pauseBackgroundMusic();
+    
 }
 
 // this function will be called when the app is active again
