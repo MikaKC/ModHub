@@ -30,3 +30,7 @@
 *.exe
 *.out
 *.app
+
+**/proj.win32/.vs
+**/proj.win32/Debug.Win32
+**/proj.win32/Release.win32
