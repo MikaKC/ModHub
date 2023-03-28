@@ -3,9 +3,12 @@ USING_NS_CC;
 
 #define FORCE 1.f
 
-SliderThumb* SliderThumb::createSliderThumb(std::vector<float> minMax)
+SliderThumb* SliderThumb::createSliderThumb(std::vector<float> minMax, float* valueToMod)
 {
 	auto* ret = new (std::nothrow) SliderThumb();
+	
+	ret->setValueToModify(valueToMod);
+
 	if (ret != nullptr && ret->init(minMax))
 	{
 		ret->autorelease();

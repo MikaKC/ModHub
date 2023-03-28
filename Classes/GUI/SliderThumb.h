@@ -12,11 +12,18 @@ public:
 
     virtual bool init(std::vector<float> minMax);
 
-    static SliderThumb* createSliderThumb(std::vector<float> minMax);
-private:
+    static SliderThumb* createSliderThumb(std::vector<float> minMax, float* valueToMod);
 
+protected:
+    void setValueToModify(float* p) {
+        pValueToMod = *p;
+    };
+
+private:
     CCSprite* pSpriteDeactivated;
     CCSprite* pSpriteActivated;
+
+    float pValueToMod;
 
     float pMinimumSliderPos;
     float pMaximumSliderPos;

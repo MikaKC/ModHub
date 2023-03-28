@@ -1,6 +1,6 @@
 #include "MainSelectLayer.h"
 
-#include "GUI/SliderThumb.h"
+#include "GUI/SliderNode.h"
 
 USING_NS_CC;
 
@@ -25,9 +25,11 @@ bool MainSelectLayer::init()
     
     auto menu = CCMenu::create();
 
-    SliderThumb* thumb = SliderThumb::createSliderThumb({ 100.f, 100.f });
-    menu->addChild(thumb);
-    this->addChild(menu);
+    float b = 0;
+    SliderNode* slider = SliderNode::createSlider(b);
+    this->addChild(slider);
+
+    slider->setPosition({ 300, 300 });
 
     return true;
 }
