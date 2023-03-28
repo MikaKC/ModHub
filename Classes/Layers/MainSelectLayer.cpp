@@ -1,5 +1,7 @@
 #include "MainSelectLayer.h"
 
+#include "GUI/SliderThumb.h"
+
 USING_NS_CC;
 
 CCScene* MainSelectLayer::scene()
@@ -20,9 +22,12 @@ bool MainSelectLayer::init()
     }
 
     auto winSize = CCDirector::sharedDirector()->getVisibleSize();
-
-
-
     
+    auto menu = CCMenu::create();
+
+    SliderThumb* thumb = SliderThumb::createSliderThumb({ 100.f, 100.f });
+    menu->addChild(thumb);
+    this->addChild(menu);
+
     return true;
 }
