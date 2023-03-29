@@ -16,8 +16,9 @@ bool AppDelegate::applicationDidFinishLaunching() {
     CCEGLView* pEGLView = CCEGLView::sharedOpenGLView();
 
     pDirector->setOpenGLView(pEGLView);
-
     pDirector->setAnimationInterval(1.0 / this->getRefreshRate());
+    
+    loadAssets();
 
     pDirector->runWithScene(MainSelectLayer::scene());
 
@@ -39,4 +40,13 @@ void AppDelegate::applicationWillEnterForeground() {
 
     // if you use SimpleAudioEngine, it must resume here
     // SimpleAudioEngine::sharedEngine()->resumeBackgroundMusic();
+}
+
+void AppDelegate::loadAssets()
+{
+    auto sfc = CCSpriteFrameCache::sharedSpriteFrameCache();
+    auto tc = CCTextureCache::sharedTextureCache();
+
+    tc->addImage("GJ_GameSheet03-uhd.png");
+    sfc->addSpriteFramesWithFile("GJ_GameSheet03-uhd.plist", "GJ_GameSheet03-uhd.png");
 }

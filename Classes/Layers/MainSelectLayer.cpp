@@ -22,11 +22,13 @@ bool MainSelectLayer::init()
         return false;
     }
 
+    CCLOG("hi");
+
     auto winSize = CCDirector::sharedDirector()->getVisibleSize();
     
     auto menu = CCMenu::create();
 
-    auto button = CCMenuItemSpritePlus::create(CCLabelBMFont::create("Hello World", "bigFont-uhd.fnt"), this, nullptr);
+    auto button = CCMenuItemSpritePlus::create(CCSprite::createWithSpriteFrameName("GJ_infoIcon_001.png"), this, nullptr);
     menu->addChild(button);
 
     this->addChild(menu);

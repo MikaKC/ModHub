@@ -44,6 +44,11 @@ public:
 
         return static_cast<float>(lpDevMode.dmDisplayFrequency);
     };
+
+    /**
+    @brief  Loads all assets needed in memory
+    */
+    void loadAssets();
 };
 
 #endif // _APP_DELEGATE_H_
