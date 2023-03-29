@@ -31,6 +31,10 @@ bool MainSelectLayer::init()
     auto button = CCMenuItemSpritePlus::create(CCSprite::createWithSpriteFrameName("GJ_infoIcon_001.png"), this, nullptr);
     menu->addChild(button);
 
+    auto slider = SliderNode::createSlider(0.f);
+    slider->setPosition({ 100, 100 });
+    
+    this->addChild(slider);
     this->addChild(menu);
 
     return true;

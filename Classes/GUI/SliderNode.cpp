@@ -21,11 +21,9 @@ bool SliderNode::init(float valueToMod)
 		return false;
 	
 	pThumb = SliderThumb::createSliderThumb({ pMinValue, pMaxValue }, &valueToMod);
-	pThumb->setScale(0.5f);
 
 	CCSprite* pSprite = CCSprite::create("slidergroove-uhd.png");
-	pSprite->setScale(0.5f);
-	pSprite->setPositionX(pSprite->getContentSize().width / 4);
+	pSprite->setPositionX(pSprite->getContentSize().width / 2);
 
 	this->addChild(pThumb, 1);
 	this->addChild(pSprite, 0);
