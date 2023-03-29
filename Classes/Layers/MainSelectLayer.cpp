@@ -1,6 +1,7 @@
 #include "MainSelectLayer.h"
 
 #include "GUI/SliderNode.h"
+#include "GUI/CCMenuItemSpritePlus.h"
 
 USING_NS_CC;
 
@@ -25,11 +26,10 @@ bool MainSelectLayer::init()
     
     auto menu = CCMenu::create();
 
-    float b = 0;
-    SliderNode* slider = SliderNode::createSlider(b);
-    this->addChild(slider);
+    auto button = CCMenuItemSpritePlus::create(CCLabelBMFont::create("Hello World", "bigFont-uhd.fnt"), this, nullptr);
+    menu->addChild(button);
 
-    slider->setPosition({ 300, 300 });
+    this->addChild(menu);
 
     return true;
 }
