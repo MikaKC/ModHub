@@ -3,6 +3,8 @@
 #include "GUI/SliderNode.h"
 #include "GUI/CCMenuItemSpritePlus.h"
 
+#include "CreateProjectLayer.h"
+
 USING_NS_CC;
 
 CCScene* MainSelectLayer::scene()
@@ -28,7 +30,11 @@ bool MainSelectLayer::init()
     
     auto menu = CCMenu::create();
 
-    auto button = CCMenuItemSpritePlus::create(CCSprite::createWithSpriteFrameName("GJ_infoIcon_001.png"), this, nullptr);
+    auto button = CCMenuItemSpritePlus::createWithFunction(CCSprite::createWithSpriteFrameName("GJ_newBtn_001.png"), this, [&](void) {
+        CreateProjectLayer::create()->show();
+    });
+
+
     menu->addChild(button);
 
     auto slider = SliderNode::createSlider(0.f);

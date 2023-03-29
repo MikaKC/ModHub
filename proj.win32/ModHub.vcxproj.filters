@@ -33,6 +33,12 @@
     <ClCompile Include="..\Classes\GUI\CCMenuItemSpritePlus.cpp">
       <Filter>Classes\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Layers\PopupLayer.cpp">
+      <Filter>Classes\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Layers\CreateProjectLayer.cpp">
+      <Filter>Classes\Layers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -52,6 +58,12 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GUI\CCMenuItemSpritePlus.h">
       <Filter>Classes\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Layers\PopupLayer.h">
+      <Filter>Classes\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Layers\CreateProjectLayer.h">
+      <Filter>Classes\Layers</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

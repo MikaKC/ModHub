@@ -17,7 +17,7 @@ bool AppDelegate::applicationDidFinishLaunching() {
 
     pDirector->setOpenGLView(pEGLView);
     pDirector->setAnimationInterval(1.0 / this->getRefreshRate());
-    pDirector->setContentScaleFactor(2.f);
+    // pDirector->setContentScaleFactor(2.f);
 
     loadAssets();
 

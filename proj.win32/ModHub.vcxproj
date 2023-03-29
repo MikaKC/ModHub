@@ -137,7 +137,9 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\GUI\CCMenuItemSpritePlus.cpp" />
     <ClCompile Include="..\Classes\GUI\SliderNode.cpp" />
     <ClCompile Include="..\Classes\GUI\SliderThumb.cpp" />
+    <ClCompile Include="..\Classes\Layers\CreateProjectLayer.cpp" />
     <ClCompile Include="..\Classes\Layers\MainSelectLayer.cpp" />
+    <ClCompile Include="..\Classes\Layers\PopupLayer.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -145,7 +147,9 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\GUI\CCMenuItemSpritePlus.h" />
     <ClInclude Include="..\Classes\GUI\SliderNode.h" />
     <ClInclude Include="..\Classes\GUI\SliderThumb.h" />
+    <ClInclude Include="..\Classes\Layers\CreateProjectLayer.h" />
     <ClInclude Include="..\Classes\Layers\MainSelectLayer.h" />
+    <ClInclude Include="..\Classes\Layers\PopupLayer.h" />
     <ClInclude Include="main.h" />
   </ItemGroup>
   <ItemGroup>
