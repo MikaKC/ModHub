@@ -4,6 +4,8 @@
 #include "GUI/CCMenuItemSpritePlus.h"
 
 #include "CreateProjectLayer.h"
+#include "SettingsLayer.h"
+#include "ProjectsLayer.h"
 
 USING_NS_CC;
 
@@ -38,12 +40,12 @@ bool MainSelectLayer::init()
     newButton->setBaseScale(1.f);
 
     auto existingButton = CCMenuItemSpritePlus::createWithFunction(CCSprite::createWithSpriteFrameName("GJ_downloadBtn_001.png"), this, [&](void) {
-        // CreateProjectLayer::create()->show();
+        ProjectsLayer::create()->show();
     });
     existingButton->runAction(CCEaseBackOut::create(CCMoveTo::create(0.75f, { -newButton->getContentSize().width, 0 })));
 
     auto settingsButton = CCMenuItemSpritePlus::createWithFunction(CCSprite::createWithSpriteFrameName("GJ_optionsBtn_001.png"), this, [&](void) {
-        // CreateProjectLayer::create()->show();
+        SettingsLayer::create()->show();
     });
     settingsButton->setScale(0.8f);
     settingsButton->runAction(CCEaseBackOut::create(CCMoveTo::create(0.75f, { newButton->getContentSize().width, 0 })));

@@ -39,6 +39,12 @@
     <ClCompile Include="..\Classes\Layers\CreateProjectLayer.cpp">
       <Filter>Classes\Layers</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Layers\SettingsLayer.cpp">
+      <Filter>Classes\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Layers\ProjectsLayer.cpp">
+      <Filter>Classes\Layers</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -63,6 +69,12 @@
       <Filter>Classes\Layers</Filter>
     </ClInclude>
     <ClInclude Include="..\Classes\Layers\CreateProjectLayer.h">
+      <Filter>Classes\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Layers\SettingsLayer.h">
+      <Filter>Classes\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Layers\ProjectsLayer.h">
       <Filter>Classes\Layers</Filter>
     </ClInclude>
   </ItemGroup>
