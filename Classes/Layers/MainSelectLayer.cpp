@@ -30,17 +30,34 @@ bool MainSelectLayer::init()
     
     auto menu = CCMenu::create();
 
-    auto button = CCMenuItemSpritePlus::createWithFunction(CCSprite::createWithSpriteFrameName("GJ_newBtn_001.png"), this, [&](void) {
+    auto newButton = CCMenuItemSpritePlus::createWithFunction(CCSprite::createWithSpriteFrameName("GJ_newBtn_001.png"), this, [&](void) {
         CreateProjectLayer::create()->show();
     });
+    newButton->setScale(0.f);
+    newButton->runAction(CCEaseInOut::create(CCScaleTo::create(0.6f, 1), 2.f));
+    newButton->setBaseScale(1.f);
 
+    auto existingButton = CCMenuItemSpritePlus::createWithFunction(CCSprite::createWithSpriteFrameName("GJ_downloadBtn_001.png"), this, [&](void) {
+        // CreateProjectLayer::create()->show();
+    });
+    existingButton->runAction(CCEaseBackOut::create(CCMoveTo::create(0.75f, { -newButton->getContentSize().width, 0 })));
 
-    menu->addChild(button);
+    auto settingsButton = CCMenuItemSpritePlus::createWithFunction(CCSprite::createWithSpriteFrameName("GJ_optionsBtn_001.png"), this, [&](void) {
+        // CreateProjectLayer::create()->show();
+    });
+    settingsButton->setScale(0.8f);
+    settingsButton->runAction(CCEaseBackOut::create(CCMoveTo::create(0.75f, { newButton->getContentSize().width, 0 })));
 
-    auto slider = SliderNode::createSlider(0.f);
-    slider->setPosition({ 100, 100 });
-    
-    this->addChild(slider);
+    auto mainSprite = CCSprite::create("MH_MainSprite.png");
+    mainSprite->setScale(0.f);
+    this->addChild(mainSprite);
+    mainSprite->runAction(CCEaseElasticOut::create(CCScaleTo::create(1.f, 0.8f), 0.6f));
+    mainSprite->setPosition({ winSize.width / 2, winSize.height - mainSprite->getContentSize().height + 80 });
+
+    menu->addChild(existingButton);
+    menu->addChild(newButton, 1);
+    menu->addChild(settingsButton);
+
     this->addChild(menu);
 
     return true;

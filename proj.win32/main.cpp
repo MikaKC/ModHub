@@ -16,7 +16,7 @@ int APIENTRY _tWinMain(HINSTANCE hInstance,
     AppDelegate app;
     CCEGLView* eglView = CCEGLView::sharedOpenGLView();
     eglView->setViewName("Mod Hub");
-    eglView->setFrameSize(1280, 720);
+    eglView->setFrameSize(1600, 900);
 
     return CCApplication::sharedApplication()->run();
 }

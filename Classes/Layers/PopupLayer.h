@@ -7,7 +7,7 @@ class PopupLayer : public cocos2d::CCLayerColor
 {
 CC_SYNTHESIZE(bool, pAnimation, Animation)
 
-private:
+protected:
 	cocos2d::CCSize pLayerSize;
 
 	cocos2d::CCLayer* pLayer;
