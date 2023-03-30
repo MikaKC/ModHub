@@ -13,6 +13,12 @@
     <Filter Include="Classes\Layers">
       <UniqueIdentifier>{bb908dae-1383-450f-b298-e911b9963146}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Classes\Util">
+      <UniqueIdentifier>{39a59f9b-317d-4340-89b4-2150debb29ae}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Classes\Other">
+      <UniqueIdentifier>{998f239d-813f-4802-84cf-fbcaef44b5ea}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="main.cpp">
@@ -45,6 +51,12 @@
     <ClCompile Include="..\Classes\Layers\ProjectsLayer.cpp">
       <Filter>Classes\Layers</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Layers\FileExplorerLayer.cpp">
+      <Filter>Classes\Layers</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\GUI\ProjectCell.cpp">
+      <Filter>Classes\GUI</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -76,6 +88,21 @@
     </ClInclude>
     <ClInclude Include="..\Classes\Layers\ProjectsLayer.h">
       <Filter>Classes\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Util\EasyClippingNode.h">
+      <Filter>Classes\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Util\Toolbox.h">
+      <Filter>Classes\Util</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Layers\FileExplorerLayer.h">
+      <Filter>Classes\Layers</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Other\ProjectDelegate.h">
+      <Filter>Classes\Other</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GUI\ProjectCell.h">
+      <Filter>Classes\GUI</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

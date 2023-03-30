@@ -32,6 +32,8 @@ bool PopupLayer::init(cocos2d::CCSize scale, const std::string& sprite, const st
         this->pLayer->addChild(text);
     }
 
+    this->pAnimation = true;
+
     customSetup();
 
 
@@ -70,15 +72,15 @@ void PopupLayer::show()
     auto visibleSize = cocos2d::CCDirector::sharedDirector()->getVisibleSize();
 
     // Add margin (+5)
-    this->setPositionX(visibleSize.width + pLayerSize.width + 5);
+    pLayer->setPositionX(visibleSize.width + pLayerSize.width + 5);
 
     auto moveAction = CCMoveTo::create(0.5f, {0,0});
     auto ease = CCEaseElasticOut::create(moveAction, 0.6f);
     
-    if (this->getAnimation())
-        this->runAction(ease);
+    if(getAnimation())
+        pLayer->runAction(ease);
     else
-        this->setPosition({ 0, 0 });
+        pLayer->setPosition({0,0});
 }
 
 void PopupLayer::onClose(cocos2d::CCObject* pSender)
