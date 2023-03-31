@@ -1,6 +1,13 @@
 #include "FileExplorerLayer.h"
+#include "ProjectsLayer.h"
 
 USING_NS_CC;
+
+void FileExplorerLayer::closeOther(cocos2d::CCObject* pSel)
+{
+	auto layer = static_cast<ProjectsLayer*>(pSel);
+	layer->onClose(nullptr);
+}
 
 void FileExplorerLayer::customSetup()
 {
@@ -16,9 +23,20 @@ void FileExplorerLayer::customSetup()
 	greyBG->setOpacity(105);
 }
 
-FileExplorerLayer* FileExplorerLayer::create()
+void FileExplorerLayer::onClose(cocos2d::CCObject* pSender)
+{
+	getProjectLayer()->runAction(CCEaseElasticOut::create(CCScaleTo::create(0.5f, 1), 0.6f));
+	getProjectLayer()->show();
+	PopupLayer::onClose(nullptr);
+}
+
+FileExplorerLayer* FileExplorerLayer::create(ProjectsLayer* pl)
 {
 	auto ret = new (std::nothrow) FileExplorerLayer();
+	pl->runAction(CCSequence::createWithTwoActions(CCEaseElasticOut::create(CCScaleTo::create(0.5f, 0), 0.6f), CCCallFuncO::create(ret, callfuncO_selector(FileExplorerLayer::closeOther), pl)));
+	
+	ret->setProjectLayer(pl);
+
 	if (ret != nullptr && ret->init({ 900, 600 }, "GJ_square04-uhd.png", "Manage Project:"))
 	{
 		ret->autorelease();

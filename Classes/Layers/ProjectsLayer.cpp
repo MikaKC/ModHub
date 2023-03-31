@@ -16,6 +16,21 @@ void ProjectsLayer::scrollWheel(float x, float y)
 	}
 }
 
+bool ProjectsLayer::ccTouchBegan(cocos2d::CCTouch* pTouch, cocos2d::CCEvent* pEvent)
+{
+	return true;
+}
+
+void ProjectsLayer::ccTouchMoved(CCTouch* pTouch, CCEvent* pEvent)
+{
+	float movementAmt = pTouch->getPreviousLocationInView().y - pTouch->getLocationInView().y;
+	CCLOG("%f.3", movementAmt);
+
+	float desiredForce = movementAmt * 10.f;
+
+	this->scrollWheel(0, desiredForce);
+}
+
 void ProjectsLayer::customSetup()
 {
 	auto visibleSize = CCDirector::sharedDirector()->getVisibleSize();
@@ -35,9 +50,9 @@ void ProjectsLayer::customSetup()
 	baseClippingNode->setContentSize({ 1100, 673 });
 	baseClippingNode->setPosition({ 250, 84.f });
 
-	pCells.push_back(CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create("FutureDash", "bigFont-uhd.fnt"), pLayer, [&]() { FileExplorerLayer::create()->show(); }));
-	pCells.push_back(CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create("FutureDash-Geode", "bigFont-uhd.fnt"), pLayer, [&]() { FileExplorerLayer::create()->show(); }));
-	pCells.push_back(CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create("GDPSTools", "bigFont-uhd.fnt"), pLayer, [&]() { FileExplorerLayer::create()->show(); }));
+	pCells.push_back(CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create("FutureDash", "bigFont-uhd.fnt"), pLayer, [&]() { FileExplorerLayer::create(this)->show(); }));
+	pCells.push_back(CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create("FutureDash-Geode", "bigFont-uhd.fnt"), pLayer, [&]() { FileExplorerLayer::create(this)->show(); }));
+	pCells.push_back(CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create("GDPSTools", "bigFont-uhd.fnt"), pLayer, [&]() { FileExplorerLayer::create(this)->show(); }));
 
 	CCMenu* listMenu = CCMenu::create();
 	listMenu->setTouchPriority(-350);

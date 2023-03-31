@@ -25,5 +25,5 @@ public:
 
 	virtual bool ccTouchBegan(cocos2d::CCTouch* pTouch, cocos2d::CCEvent* pEvent) override { return true; }
 
-	void onClose(cocos2d::CCObject* pSender);
+	virtual void onClose(cocos2d::CCObject* pSender);
 };
