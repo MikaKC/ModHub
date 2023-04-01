@@ -10,11 +10,11 @@ private:
 
 public:
 
+	void moveScroll(float y);
 	virtual void scrollWheel(float x, float y);
 
 	virtual bool ccTouchBegan(cocos2d::CCTouch* pTouch, cocos2d::CCEvent* pEvent);
 	virtual void ccTouchMoved(cocos2d::CCTouch* pTouch, cocos2d::CCEvent* pEvent);
-
 
 	void customSetup() override;
 	static ProjectsLayer* create();

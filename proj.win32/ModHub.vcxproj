@@ -145,6 +145,8 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClCompile Include="..\Classes\Layers\PopupLayer.cpp" />
     <ClCompile Include="..\Classes\Layers\ProjectsLayer.cpp" />
     <ClCompile Include="..\Classes\Layers\SettingsLayer.cpp" />
+    <ClCompile Include="..\Classes\Other\ProjectManager.cpp" />
+    <ClCompile Include="..\Classes\Util\Toolbox.cpp" />
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
@@ -160,6 +162,7 @@ xcopy /Y /Q "$(ProjectDir)..\..\..\external\libwebsockets\win32\lib\*.*" "$(OutD
     <ClInclude Include="..\Classes\Layers\ProjectsLayer.h" />
     <ClInclude Include="..\Classes\Layers\SettingsLayer.h" />
     <ClInclude Include="..\Classes\Other\ProjectDelegate.h" />
+    <ClInclude Include="..\Classes\Other\ProjectManager.h" />
     <ClInclude Include="..\Classes\Util\EasyClippingNode.h" />
     <ClInclude Include="..\Classes\Util\Toolbox.h" />
     <ClInclude Include="main.h" />

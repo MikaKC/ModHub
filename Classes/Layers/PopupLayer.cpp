@@ -50,7 +50,7 @@ bool PopupLayer::init(cocos2d::CCSize scale, const std::string& sprite, const st
     );
     closeBtn->setUserData(reinterpret_cast<void*>(this));
 
-    this->pMenu->addChild(closeBtn);
+    this->pMenu->addChild(closeBtn, 10);
 
     closeBtn->setPosition(-scale.width / 2 + 40, scale.height / 2 - 10);
 

@@ -57,6 +57,12 @@
     <ClCompile Include="..\Classes\GUI\ProjectCell.cpp">
       <Filter>Classes\GUI</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\Other\ProjectManager.cpp">
+      <Filter>Classes\Other</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\Util\Toolbox.cpp">
+      <Filter>Classes\Util</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="main.h">
@@ -103,6 +109,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\GUI\ProjectCell.h">
       <Filter>Classes\GUI</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\Other\ProjectManager.h">
+      <Filter>Classes\Other</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

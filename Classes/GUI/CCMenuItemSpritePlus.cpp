@@ -9,6 +9,7 @@ CCMenuItemSpritePlus* CCMenuItemSpritePlus::create(cocos2d::CCNode* childNode, c
 	ret->setScaleMultiplier(1.25f);
 	ret->setBaseScale(1.f);
 	ret->pFunctionSelector = false;
+	ret->pSelector = nullptr;
 
 	if (ret && ret->initWithNormalSprite(childNode, childNode, childNode, other, sel))
 	{
@@ -28,7 +29,6 @@ CCMenuItemSpritePlus* CCMenuItemSpritePlus::createWithFunction(cocos2d::CCNode* 
 	ret->setBaseScale(1.f);
 	ret->pFunctionSelector = true;
 	ret->pSelector = sel;
-
 
 	if (ret && ret->initWithNormalSprite(childNode, childNode, childNode, other, nullptr))
 	{

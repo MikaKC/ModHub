@@ -26,8 +26,6 @@ bool MainSelectLayer::init()
         return false;
     }
 
-    CCLOG("hi");
-
     auto winSize = CCDirector::sharedDirector()->getVisibleSize();
     
     auto menu = CCMenu::create();

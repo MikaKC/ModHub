@@ -4,19 +4,26 @@
 #include "Util/Toolbox.h"
 
 #include "GUI/CCMenuItemSpritePlus.h"
+#include "GUI/ProjectCell.h"
+
 #include "FileExplorerLayer.h"
+#include "Other/ProjectManager.h"
 
 USING_NS_CC;
 
 #define SCROLL_SPEED 0.175f
-#define TOUCH_SPEED 9.f
 
-void ProjectsLayer::scrollWheel(float x, float y)
+void ProjectsLayer::moveScroll(float y)
 {
 	for (CCNode* cell : pCells)
 	{
-		cell->setPositionY(cell->getPositionY() + (-y * SCROLL_SPEED));
+		cell->setPositionY(cell->getPositionY() + y);
 	}
+}
+
+void ProjectsLayer::scrollWheel(float x, float y)
+{
+	this->moveScroll(-y * SCROLL_SPEED);
 }
 
 bool ProjectsLayer::ccTouchBegan(cocos2d::CCTouch* pTouch, cocos2d::CCEvent* pEvent)
@@ -26,9 +33,8 @@ bool ProjectsLayer::ccTouchBegan(cocos2d::CCTouch* pTouch, cocos2d::CCEvent* pEv
 void ProjectsLayer::ccTouchMoved(CCTouch* pTouch, CCEvent* pEvent)
 {
 	float movementAmt = pTouch->getPreviousLocationInView().y - pTouch->getLocationInView().y;
-	float desiredForce = movementAmt * TOUCH_SPEED;
 
-	this->scrollWheel(0, desiredForce);
+	this->moveScroll(movementAmt);
 }
 
 void ProjectsLayer::customSetup()
@@ -37,39 +43,34 @@ void ProjectsLayer::customSetup()
 
 	CCDirector::sharedDirector()->getMouseDispatcher()->addDelegate(this);
 
-	auto greyBG = extension::CCScale9Sprite::create("square02_001-uhd.png", { 0, 0, 320, 320 });
+	auto greyBG = extension::CCScale9Sprite::create("square.png", { 0, 0, 32, 32 });
 	pLayer->addChild(greyBG, 1);
 
+	greyBG->setColor({ 0,0,0 });
 	greyBG->setContentSize({ 1100, 675 });
 	greyBG->setPosition(visibleSize / 2);
 	greyBG->setPositionY(greyBG->getPositionY() - 30);
 	greyBG->setOpacity(105);
 
 	auto baseClippingNode = EasyClipping::create();
-	pLayer->addChild(baseClippingNode, 2);
+	pLayer->addChild(baseClippingNode, 1);
 	baseClippingNode->setContentSize({ 1100, 673 });
 	baseClippingNode->setPosition({ 250, 84.f });
 
-	pCells.push_back(CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create("FutureDash", "bigFont-uhd.fnt"), pLayer, [&]() { FileExplorerLayer::sharedLayer(this)->show(); }));
-	pCells.push_back(CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create("FutureDash-Geode", "bigFont-uhd.fnt"), pLayer, [&]() { FileExplorerLayer::sharedLayer(this)->show(); }));
-	pCells.push_back(CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create("GDPSTools", "bigFont-uhd.fnt"), pLayer, [&]() { FileExplorerLayer::sharedLayer(this)->show(); }));
+	for (const std::string& entry : ProjectManager::sharedManager()->GetAllFoldersInDir(ProjectManager::sharedManager()->getSearchDirectory()))
+		pCells.push_back(ProjectCell::create(entry));
 
 	CCMenu* listMenu = CCMenu::create();
-	listMenu->setTouchPriority(-350);
 
 	// add any list objects in baseClippingNode
 	for (CCNode* cell : pCells)
 	{
-		static_cast<CCMenuItemSpritePlus*>(cell)->setScale(0.5f);
 		listMenu->addChild(cell);
-
-		cell->setPosition(baseClippingNode->getContentSize() / 2);
-		
-		baseClippingNode->addChild(listMenu);
 	}
 
+	baseClippingNode->addChild(listMenu);
 	listMenu->setPosition(baseClippingNode->getContentSize() / 2);
-	listMenu->alignItemsVerticallyWithPadding(1.f);
+	listMenu->alignItemsVertically();
 }
 
 ProjectsLayer* ProjectsLayer::create()
