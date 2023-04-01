@@ -8,11 +8,14 @@
 
 USING_NS_CC;
 
+#define SCROLL_SPEED 0.175f
+#define TOUCH_SPEED 9.f
+
 void ProjectsLayer::scrollWheel(float x, float y)
 {
 	for (CCNode* cell : pCells)
 	{
-		cell->setPositionY(cell->getPositionY() + (-y * 0.1f));
+		cell->setPositionY(cell->getPositionY() + (-y * SCROLL_SPEED));
 	}
 }
 
@@ -20,13 +23,10 @@ bool ProjectsLayer::ccTouchBegan(cocos2d::CCTouch* pTouch, cocos2d::CCEvent* pEv
 {
 	return true;
 }
-
 void ProjectsLayer::ccTouchMoved(CCTouch* pTouch, CCEvent* pEvent)
 {
 	float movementAmt = pTouch->getPreviousLocationInView().y - pTouch->getLocationInView().y;
-	CCLOG("%f.3", movementAmt);
-
-	float desiredForce = movementAmt * 10.f;
+	float desiredForce = movementAmt * TOUCH_SPEED;
 
 	this->scrollWheel(0, desiredForce);
 }
@@ -50,9 +50,9 @@ void ProjectsLayer::customSetup()
 	baseClippingNode->setContentSize({ 1100, 673 });
 	baseClippingNode->setPosition({ 250, 84.f });
 
-	pCells.push_back(CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create("FutureDash", "bigFont-uhd.fnt"), pLayer, [&]() { FileExplorerLayer::create(this)->show(); }));
-	pCells.push_back(CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create("FutureDash-Geode", "bigFont-uhd.fnt"), pLayer, [&]() { FileExplorerLayer::create(this)->show(); }));
-	pCells.push_back(CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create("GDPSTools", "bigFont-uhd.fnt"), pLayer, [&]() { FileExplorerLayer::create(this)->show(); }));
+	pCells.push_back(CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create("FutureDash", "bigFont-uhd.fnt"), pLayer, [&]() { FileExplorerLayer::sharedLayer(this)->show(); }));
+	pCells.push_back(CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create("FutureDash-Geode", "bigFont-uhd.fnt"), pLayer, [&]() { FileExplorerLayer::sharedLayer(this)->show(); }));
+	pCells.push_back(CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create("GDPSTools", "bigFont-uhd.fnt"), pLayer, [&]() { FileExplorerLayer::sharedLayer(this)->show(); }));
 
 	CCMenu* listMenu = CCMenu::create();
 	listMenu->setTouchPriority(-350);

@@ -29,6 +29,16 @@ void FileExplorerLayer::onClose(cocos2d::CCObject* pSender)
 	getProjectLayer()->show();
 	PopupLayer::onClose(nullptr);
 }
+static FileExplorerLayer* _sharedFileExplorer = nullptr;
+
+FileExplorerLayer* FileExplorerLayer::sharedLayer(ProjectsLayer* pl)
+{
+	if (_sharedFileExplorer == nullptr) {
+		_sharedFileExplorer = FileExplorerLayer::create(pl);
+	}
+	
+	return _sharedFileExplorer;
+}
 
 FileExplorerLayer* FileExplorerLayer::create(ProjectsLayer* pl)
 {

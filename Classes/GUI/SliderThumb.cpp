@@ -68,7 +68,6 @@ void SliderThumb::ccTouchMoved(CCTouch* pTouch, CCEvent* pEvent)
 	if (pIsClickingOnSprite == true)
 	{
 		float movementAmt = pTouch->getPreviousLocationInView().x - pTouch->getLocationInView().x;
-		CCLOG("%f.3", movementAmt);
 
 		float desiredForce = -(movementAmt * FORCE);
 
