@@ -4,7 +4,6 @@
 
 USING_NS_CC;
 
-// What?
 std::vector<std::string> ProjectManager::GetAllFoldersInDir(std::string dir)
 {
     WIN32_FIND_DATAA data;

@@ -1,5 +1,7 @@
 #include "ProjectCell.h"
 #include "Layers/FileExplorerLayer.h"
+#include "Layers/ProjectsLayer.h"
+
 USING_NS_CC;
 USING_NS_CC_EXT;
 
@@ -10,7 +12,7 @@ bool ProjectCell::init()
 	this->setContentSize({ 1100, 169 });
 	auto menu = CCMenu::create();
 
-	pLabel = CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create(getProjectName().c_str(), "bigFont-uhd.fnt"), this, [=]() {  });
+	pLabel = CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create(getProjectName().c_str(), "bigFont-uhd.fnt"), this, [=]() { FileExplorerLayer::create(getProjectLayer())->show(); });
 	menu->addChild(pLabel, 1);
 	pLabel->setScale(0.5f);
 	
@@ -27,10 +29,11 @@ bool ProjectCell::init()
 	return true;
 }
 
-ProjectCell* ProjectCell::create(const std::string& name)
+ProjectCell* ProjectCell::create(const std::string& name, ProjectsLayer* lr)
 {
 	auto ret = new (std::nothrow) ProjectCell;
 	ret->setProjectName(name);
+	ret->setProjectLayer(lr);
 
 	if (ret && ret->init())
 	{

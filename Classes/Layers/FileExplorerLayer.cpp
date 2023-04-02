@@ -1,6 +1,8 @@
 #include "FileExplorerLayer.h"
 #include "ProjectsLayer.h"
 
+#include <fmod/fmod.hpp>
+
 USING_NS_CC;
 
 void FileExplorerLayer::closeOther(cocos2d::CCObject* pSel)
@@ -20,7 +22,7 @@ void FileExplorerLayer::customSetup()
 	greyBG->setContentSize({ 800, 475 });
 	greyBG->setPosition(visibleSize / 2);
 	greyBG->setPositionY(greyBG->getPositionY() - 30);
-	greyBG->setOpacity(105);
+	greyBG->setOpacity(105);	
 }
 
 void FileExplorerLayer::onClose(cocos2d::CCObject* pSender)
@@ -30,15 +32,6 @@ void FileExplorerLayer::onClose(cocos2d::CCObject* pSender)
 	PopupLayer::onClose(nullptr);
 }
 static FileExplorerLayer* _sharedFileExplorer = nullptr;
-
-FileExplorerLayer* FileExplorerLayer::sharedLayer(ProjectsLayer* pl)
-{
-	if (_sharedFileExplorer == nullptr) {
-		_sharedFileExplorer = FileExplorerLayer::create(pl);
-	}
-	
-	return _sharedFileExplorer;
-}
 
 FileExplorerLayer* FileExplorerLayer::create(ProjectsLayer* pl)
 {

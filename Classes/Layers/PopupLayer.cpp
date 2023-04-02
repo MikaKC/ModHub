@@ -68,6 +68,7 @@ void PopupLayer::keyBackClicked()
 void PopupLayer::show()
 {
     CCDirector::sharedDirector()->getRunningScene()->addChild(this, CCDirector::sharedDirector()->getRunningScene()->getHighestChildOrder() + 1);
+    this->setTouchEnabled(true);
 
     auto visibleSize = cocos2d::CCDirector::sharedDirector()->getVisibleSize();
 
