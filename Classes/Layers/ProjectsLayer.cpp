@@ -57,13 +57,13 @@ void ProjectsLayer::customSetup()
 	baseClippingNode->setContentSize({ 1100, 673 });
 	baseClippingNode->setPosition({ 250, 84.f });
 
-	pCells.push_back(ProjectCell::create("Suck", this));
-	pCells.push_back(ProjectCell::create("Big", this));
-	pCells.push_back(ProjectCell::create("Juicy", this));
-	pCells.push_back(ProjectCell::create("Cock", this));
+	pCells.push_back(ProjectCell::create("Suck"));
+	pCells.push_back(ProjectCell::create("Big"));
+	pCells.push_back(ProjectCell::create("Juicy"));
+	pCells.push_back(ProjectCell::create("Cock"));
 
 	for (const std::string& entry : ProjectManager::sharedManager()->GetAllFoldersInDir(ProjectManager::sharedManager()->getSearchDirectory()))
-		pCells.push_back(ProjectCell::create(entry, this));
+		pCells.push_back(ProjectCell::create(entry));
 
 	CCMenu* listMenu = CCMenu::create();
 

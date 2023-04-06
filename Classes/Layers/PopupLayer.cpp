@@ -20,6 +20,9 @@ bool PopupLayer::init(cocos2d::CCSize scale, const std::string& sprite, const st
     this->pMenu = cocos2d::CCMenu::create();
     this->pLayer->addChild(this->pMenu, 2);
 
+    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, -300, true);
+    pMenu->setTouchPriority(-300);
+
     if (sizeof title > 0) {
         auto text = CCLabelBMFont::create(title.c_str(), "bigFont-uhd.fnt");
         text->setScale(0.45f);
@@ -36,9 +39,7 @@ bool PopupLayer::init(cocos2d::CCSize scale, const std::string& sprite, const st
 
     customSetup();
 
-
-    CCDirector::sharedDirector()->getTouchDispatcher()->addTargetedDelegate(this, -300, true);
-    pMenu->setTouchPriority(-400);
+    CCDirector::sharedDirector()->getTouchDispatcher()->incrementForcePrio(2);
 
     auto closeSpr = cocos2d::CCSprite::createWithSpriteFrameName("GJ_closeBtn_001.png");
     closeSpr->setScale(.75f);

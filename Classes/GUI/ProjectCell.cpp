@@ -12,7 +12,7 @@ bool ProjectCell::init()
 	this->setContentSize({ 1100, 169 });
 	auto menu = CCMenu::create();
 
-	pLabel = CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create(getProjectName().c_str(), "bigFont-uhd.fnt"), this, [=]() { FileExplorerLayer::create(getProjectLayer())->show(); });
+	pLabel = CCMenuItemSpritePlus::createWithFunction(CCLabelBMFont::create(getProjectName().c_str(), "bigFont-uhd.fnt"), this, [=]() { FileExplorerLayer::create()->show(); });
 	menu->addChild(pLabel, 1);
 	pLabel->setScale(0.5f);
 	
@@ -22,18 +22,17 @@ bool ProjectCell::init()
 	pBackground->setOpacity(50);
 	pBackground->setContentSize(this->getContentSize());
 
-	menu->setTouchPriority(-500);
+	menu->setTouchPriority(-300);
 	this->addChild(menu);
 	menu->setPosition({ 0, 0 });
 
 	return true;
 }
 
-ProjectCell* ProjectCell::create(const std::string& name, ProjectsLayer* lr)
+ProjectCell* ProjectCell::create(const std::string& name)
 {
 	auto ret = new (std::nothrow) ProjectCell;
 	ret->setProjectName(name);
-	ret->setProjectLayer(lr);
 
 	if (ret && ret->init())
 	{
